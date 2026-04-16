@@ -1,0 +1,20 @@
+<h2>Add Membership</h2>
+
+<form onsubmit="return validate()">
+First Name: <input required><br>
+Last Name: <input required><br>
+
+Membership:
+<input type="radio" name="m" checked>6 months
+<input type="radio" name="m">1 year
+<input type="radio" name="m">2 years<br><br>
+
+<button type="submit">Submit</button>
+</form>
+
+<script>
+function validate(){
+    window.location="success.html";
+    return false;
+}
+</script>

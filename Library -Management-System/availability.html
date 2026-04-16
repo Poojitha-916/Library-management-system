@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Check Book Availability</title>
+</head>
+<body>
+
+<h2>Check Book Availability</h2>
+
+Book Name: <input id="book"><br><br>
+Author Name: <input id="author"><br><br>
+
+<p id="error" style="color:red"></p>
+
+<button onclick="search()">Search</button>
+
+<script>
+function search(){
+    let b = document.getElementById("book").value;
+    let a = document.getElementById("author").value;
+
+    if(b === "" && a === ""){
+        document.getElementById("error").innerText =
+        "Enter at least one field";
+        return;
+    }
+
+    window.location = "results.html";
+}
+</script>
+
+</body>
+</html>

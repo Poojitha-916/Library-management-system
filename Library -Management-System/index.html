@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+<h1>Library Management System</h1>
+
+<input type="text" id="user" placeholder="User ID">
+<input type="password" id="pass" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+</div>
+<button onclick="login()">Login</button>
+
+<script>
+function login(){
+    let user = document.getElementById("user").value;
+
+    if(user === "admin"){
+        localStorage.setItem("role","admin");
+        window.location = "admin.html";
+    } else {
+        localStorage.setItem("role","user");
+        window.location = "user.html";
+    }
+}
+</script>
+
+
+</body>
+</html>

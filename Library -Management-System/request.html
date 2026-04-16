@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Request Book</title>
+</head>
+<body>
+
+<h2>Request Book</h2>
+
+<p>Request sent to admin</p>
+
+<button onclick="send()">Confirm</button>
+
+<script>
+function send(){
+    let book = localStorage.getItem("selectedBook");
+
+    let requests = JSON.parse(localStorage.getItem("requests")) || [];
+    requests.push(book);
+
+    localStorage.setItem("requests", JSON.stringify(requests));
+
+    alert("Request Sent");
+
+    window.location = "user.html";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Book</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+<h1>Add Book / Movie</h1>
+
+<form onsubmit="return validate()">
+
+<label><input type="radio" name="type" checked> Book</label>
+<label><input type="radio" name="type"> Movie</label>
+
+<input type="text" id="name" placeholder="Enter Name">
+
+<input type="date" id="date">
+
+<input type="number" id="qty" placeholder="Quantity">
+
+<button type="submit">Submit</button>
+
+</form>
+
+<a href="maintenance.html">Back</a>
+
+</div>
+
+<script>
+function validate() {
+  let name = document.getElementById("name").value;
+  let date = document.getElementById("date").value;
+  let qty = document.getElementById("qty").value;
+
+  if(name === "" || date === "" || qty === "") {
+    alert("All fields required");
+    return false;
+  }
+}
+</script>
+
+</body>
+</html>

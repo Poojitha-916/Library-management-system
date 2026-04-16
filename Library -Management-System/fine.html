@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fine Payment</title>
+</head>
+<body>
+
+<h2>Fine Payment</h2>
+
+Fine: ₹50 <br><br>
+
+<input type="checkbox" id="paid"> Fine Paid<br><br>
+
+<p id="error" style="color:red"></p>
+
+<button onclick="finish()">Confirm</button>
+
+<script>
+function finish(){
+    let paid = document.getElementById("paid").checked;
+    let fine = 50;
+
+    if(fine > 0 && !paid){
+        document.getElementById("error").innerText =
+        "Please pay fine";
+        return;
+    }
+
+    window.location = "success.html";
+}
+</script>
+
+</body>
+</html>

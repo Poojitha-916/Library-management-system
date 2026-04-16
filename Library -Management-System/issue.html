@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Issue Book</title>
+</head>
+
+<body>
+
+<script>
+// 🔐 STRICT ADMIN ACCESS
+let role = localStorage.getItem("role");
+
+if(role !== "admin"){
+    alert("Access Denied: Admin Only");
+    window.location.href = "user.html";
+}
+</script>
+
+<h2>Issue Book</h2>
+
+Book Name: <input id="book"><br><br>
+Author: <input id="author" value="Auto-filled" readonly><br><br>
+
+Issue Date: <input type="date" id="issue"><br><br>
+Return Date: <input type="date" id="return" readonly><br><br>
+
+<p id="error" style="color:red"></p>
+
+<button onclick="issue()">Submit</button>
+
+<script>
+function issue(){
+    let book = document.getElementById("book").value;
+    let issueInput = document.getElementById("issue").value;
+
+    if(book === ""){
+        error("Book name required");
+        return;
+    }
+
+    if(issueInput === ""){
+        error("Select issue date");
+        return;
+    }
+
+    let issueDate = new Date(issueInput);
+    let today = new Date();
+    today.setHours(0,0,0,0);
+
+    if(issueDate < today){
+        error("Issue date cannot be in past");
+        return;
+    }
+
+    let returnDate = new Date(issueDate);
+    returnDate.setDate(returnDate.getDate() + 15);
+
+    let formattedReturn = returnDate.toISOString().split('T')[0];
+    document.getElementById("return").value = formattedReturn;
+
+    // SAVE
+    let issueData = {
+        name: book,
+        issueDate: issueInput,
+        returnDate: formattedReturn
+    };
+
+    let issuedBooks = JSON.parse(localStorage.getItem("issuedBooks")) || [];
+    issuedBooks.push(issueData);
+
+    localStorage.setItem("issuedBooks", JSON.stringify(issuedBooks));
+
+    window.location = "success.html";
+}
+
+function error(msg){
+    document.getElementById("error").innerText = msg;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Return Book</title>
+</head>
+<body>
+
+<h2>Return Book</h2>
+
+Book Name: <input id="book"><br><br>
+Serial No: <input id="serial"><br><br>
+
+<p id="error" style="color:red"></p>
+
+<button onclick="goFine()">Confirm</button>
+
+<script>
+function goFine(){
+    let b = document.getElementById("book").value;
+    let s = document.getElementById("serial").value;
+
+    if(b === "" || s === ""){
+        document.getElementById("error").innerText =
+        "Fill all required fields";
+        return;
+    }
+
+    window.location = "fine.html";
+}
+</script>
+
+</body>
+</html>

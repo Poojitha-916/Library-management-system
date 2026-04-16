@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Dashboard</title>
+</head>
+<body>
+
+<h1>User Dashboard</h1>
+
+<h3>Your Issued Books</h3>
+
+<table border="1">
+<tr>
+<th>Book</th>
+<th>Issue Date</th>
+<th>Return Date</th>
+<th>Status</th>
+</tr>
+
+<tbody id="data"></tbody>
+</table>
+
+<br>
+
+<a href="userTransactions.html">Go to Transactions</a><br>
+<a href="logout.html">Logout</a>
+
+<script>
+let issued = JSON.parse(localStorage.getItem("issuedBooks")) || [];
+
+let today = new Date();
+today.setHours(0,0,0,0);
+
+let output = "";
+
+issued.forEach(b => {
+    let returnDate = new Date(b.returnDate);
+
+    let diff = Math.ceil((returnDate - today) / (1000 * 60 * 60 * 24));
+
+    let status = "";
+
+    if(diff > 0){
+        status = diff + " days left";
+    } else if(diff === 0){
+        status = "Due Today";
+    } else {
+        status = "Overdue by " + Math.abs(diff) + " days";
+    }
+
+    output += `<tr>
+        <td>${b.name}</td>
+        <td>${b.issueDate}</td>
+        <td>${b.returnDate}</td>
+        <td>${status}</td>
+    </tr>`;
+});
+
+document.getElementById("data").innerHTML = output;
+</script>
+
+</body>
+</html>
