@@ -1,0 +1,146 @@
+
+
+ Library Management System (Frontend Prototype)
+
+ Project Overview
+
+The Library Management System is a frontend-based web application that simulates basic library operations. It provides separate interfaces for Admin and User roles, enabling management of books, memberships, and transactions.
+
+The project is developed using HTML, CSS, and JavaScript. Browser localStorage is used to simulate data storage.
+
+
+ Objectives
+
+* To implement a basic library workflow
+* To provide role-based access (Admin and User)
+* To implement validations on forms
+* To simulate dynamic behavior without backend
+
+
+
+ Modules
+
+ Admin Module
+
+Admin has access to:
+
+* Maintenance
+
+  * Add Membership
+  * Update Membership
+  * Add Book/Movie
+  * Update Book/Movie
+  * User Management
+
+* Transactions
+
+  * Check Book Availability
+  * Issue Book
+  * Return Book
+
+* Reports
+
+  * Master List of Books
+  * Master List of Movies
+  * Master List of Memberships
+  * Active Issues
+  * Overdue Returns
+  * Issue Requests
+
+User Module
+
+User has access to:
+
+* Search books
+* View issued books
+* View return date and status
+* Return books
+
+User cannot:
+
+* Access maintenance
+* Issue books directly
+
+
+
+ Login System
+
+The system uses a simple role-based login:
+
+* If username is "admin" → Admin Dashboard
+* Any other input → User Dashboard
+
+Passwords are hidden using password input fields.
+
+ Workflow
+
+ Admin Flow
+
+Admin Login → Dashboard → Transactions → Issue Book → Success
+
+User Flow
+
+User Login → Dashboard → Search Book → View Results → Return Book → Fine Payment (if applicable)
+
+
+
+ Features Implemented
+
+* Role-based access control
+* Form validations
+* Issue date cannot be earlier than current date
+* Return date automatically set to 15 days from issue date
+* Fine validation using checkbox
+* Use of radio buttons and checkboxes as required
+* Data storage using localStorage
+
+
+
+ Technologies Used
+
+* HTML
+* CSS
+* JavaScript
+* localStorage
+
+
+ Project Structure
+
+Library-Management-System/
+│
+├── index.html
+├── admin.html
+├── user.html
+├── maintenance.html
+├── reports.html
+├── transactions.html
+│
+├── availability.html
+├── results.html
+├── issue.html
+├── return.html
+├── fine.html
+│
+├── style.css
+└── script.js
+
+ Limitations
+
+* No backend or database integration
+* Data stored only in browser (localStorage)
+* Data may be lost if storage is cleared
+
+
+
+ Future Enhancements
+
+* Add backend integration (Node.js / Java)
+* Connect to database (MySQL / MongoDB)
+* Implement secure authentication
+* Improve UI design
+* Enable real-time data synchronization
+
+
+ Conclusion
+
+This project demonstrates a functional frontend model of a Library Management System with role-based access and essential features. It can be extended into a full-stack application with backend integration.
